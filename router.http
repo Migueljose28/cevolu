@@ -1,0 +1,17 @@
+GET http://127.0.0.1:8000/start
+
+
+####
+
+POST http://127.0.0.1:8000/create
+Content-Type: application/json
+
+{
+  "username": "nomeDeUsuario",  
+  "email": "email@example.com",
+  "phone": "1234567890",
+  "cpf_cnpj": "12345678901234",
+  "password": "minhasenha"
+}
+
+
