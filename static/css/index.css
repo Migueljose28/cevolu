@@ -1,0 +1,218 @@
+body{
+   
+    background-color: #201b2c;
+    margin: 0;
+    padding: 0;
+}
+
+
+li{
+    list-style-type: none;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color: #2b2636;
+    width: 100%;
+    height: auto;
+    padding: 20px 0px ;
+    justify-content: space-around;
+}
+
+.icon-btn {
+    width: 16px;
+    height: 16px;
+}
+
+input{
+    border: solid 3px #91b72e;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12pt;
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2vw;
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+a :hover{
+    color:  #91b72e;
+}
+
+.pdf-container {
+    width: 100%;
+    overflow: auto; /* Barra de rolagem quando necessário */
+    border: 1px solid #91b72e; /* Optional: borda para o contêiner */
+    box-shadow: 0px 1px 30px black;
+    margin: auto;
+}
+
+
+/* Estilos para o canvas */
+#pdf-canvas {
+margin: 0 auto;
+width: 100%;
+
+}
+
+.menu_botoes{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    z-index: 1;
+}
+.menu_botoes > button{
+    background-color: white;
+    color: #333333;
+    font-size: 40px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    letter-spacing: 3px;
+    outline: none;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.menu_botoes > button:hover {
+    background-color: #91b72e;
+}
+
+button, select{
+    background-color: #91b72e;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    letter-spacing: 3px;
+    outline: none;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #3dafe5;
+}
+
+
+
+.logout{
+    background-color: #91b72e;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    letter-spacing: 3px;
+    outline: none;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+    text-transform: uppercase;
+
+}
+
+
+
+
+@media (min-width: 768) and (max-width: 2000px) {
+    #pdf-canvas {
+        width: 80%;  
+    }
+}
+
+/* Para telas pequenas: tablets e celulares em modo paisagem */
+@media (max-width: 767px) {
+    nav {
+        display: flex;
+        font-size: 12px;
+        justify-content: space-around; /* Espaçamento entre os itens */
+        width: 100%;
+        padding: 5px; /* Ajusta o espaço ao redor do nav */
+    }
+
+    nav > section {
+        display: flex;
+        flex-direction: row; 
+        margin-left: 10px;
+        justify-content: flex-end;
+        gap: 5px;
+    }
+
+    nav > section > button {
+        font-size: xx-small;
+        width: 30%; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        margin-left: 5px;
+    }
+
+    nav > section > button > span {
+        display: none; 
+    }
+
+    nav > section > button > i {
+        font-size: 20px; 
+    }
+
+    nav > button {
+        width: 20%;
+        font-size: xx-small;
+        padding: 3px;
+        height: 30%;
+    }
+
+    nav > section > input {
+        width: 50%; 
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    h2 {
+        display: none;
+    }
+    
+    
+    .pdf-container {
+        width: 100%;
+        position: relative;
+    }
+
+    canvas {
+        width: 100%;
+        display: block;
+    }
+  
+    
+
+
+    p {
+        color: black;
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+li{
+    list-style-type: none;
+}
