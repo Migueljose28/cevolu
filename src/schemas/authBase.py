@@ -8,6 +8,9 @@ class UsersRegister(BaseModel):
     cpf_cnpj: str
     password: str
     
+class Userslogin(BaseModel):
+    username: str
+    password: str
 
 class Token(BaseModel):
     username: str

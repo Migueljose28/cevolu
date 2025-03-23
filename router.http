@@ -14,4 +14,12 @@ Content-Type: application/json
   "password": "minhasenha"
 }
 
+###
+POST http://127.0.0.1:8000/login
+Content-Type: application/json
+
+{
+  "username": "nomeDeUsuario",  
+  "password": "minhasenha"
+}
 

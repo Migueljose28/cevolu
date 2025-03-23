@@ -4,7 +4,7 @@ from sqlmodel import create_engine, Session, SQLModel
 import pymysql
 import sqlite3
 from typing import Annotated
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import  Depends
 
 senha = "@Consulte@20#25@"
 senha_escapada = urllib.parse.quote_plus(senha)
