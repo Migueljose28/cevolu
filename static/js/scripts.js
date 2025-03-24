@@ -28,22 +28,27 @@ document.getElementById("dropdown-button_banco_de_talento").addEventListener("cl
   });
   
 
+//token and username
+let username = localStorage.getItem("username");
+let token = localStorage.getItem("token");
+const nomeUsuario = document.getElementById("nomeUsuario");
+nomeUsuario.textContent = username ? username : '';
 
 async function verificarAutenticacao() {
-  const token = localStorage.getItem("token"); // Obtém o token do localStorage
+  // Obtém o token do localStorage
   var valor = 0;
   atualizarValor(valor);
   if (!token) {
     
-    //window.location.href = "login.html"; // Redireciona para a página de login
+    window.location.href = "login.html"; // Redireciona para a página de login
     return;
   }}
 
-  const username = localStorage.getItem("username");
-  console.log(username)
+  console.log(username, token)
 
 function logout(){
   localStorage.removeItem("token");
+  localStorage.removeItem("username");
   window.location.href = "login.html"; 
   console.log("Ahhhahahahaha")
 }

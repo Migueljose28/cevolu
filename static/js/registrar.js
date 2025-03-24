@@ -39,40 +39,34 @@ document.getElementById("registrar").addEventListener("submit", async function (
     confirmarsenha = document.getElementById("confirmarsenha").value;
 
 
-function box_mensagem(mensagem, type){
-if(type == "erro"){
-  title = "Erro";
-  color = "red";
-  color_hover = "darkred";
-
-}if(type == "success"){
-  title = "Sucesso"
-  color = "green";
-  color_hover = "darkgreen";
-
-}if(type == "aviso"){
-  title = "Aviso";
-  color = "orange";
-  color_hover = "darkorange";
-}
-document.getElementById("title_box_alert").innerHTML = title;
-document.getElementById("alert").innerHTML = mensagem;
-document.getElementById("alert").style.color = color;
-button = document.getElementById("button_box_alert");
-button.style.backgroundColor = color;
-
-button.addEventListener('mouseover', () => {
-  button.style.backgroundColor = color_hover;  
-});
-
-button.addEventListener('mouseout', () => {
-  button.style.backgroundColor = color;  
-});
-
-
-
-document.getElementById("box-alert").style.display = "flex";
-}
+    function box_mensagem(mensagem, type){
+      if(type == "erro"){
+        title = "Atenção!";
+    
+      
+      }if(type == "success"){
+        title = "Sucesso"
+      
+      
+      }if(type == "aviso"){
+        title = "Aviso";
+      }
+      document.getElementById("title_box_alert").innerHTML = title;
+      document.getElementById("alert").innerHTML = mensagem;
+      document.getElementById("alert").style.color = "#2f2841";
+      button = document.getElementById("button_box_alert");
+      button.style.backgroundColor = "#2f2841";
+      button.style.color = "white";
+      button.addEventListener('mouseover', () => {
+        button.style.backgroundColor = "black";  
+      });
+      
+      button.addEventListener('mouseout', () => {
+        button.style.backgroundColor = "#2f2841";  
+      });
+      
+      document.getElementById("box-alert").style.display = "flex";
+      }
 
 campos = {'nome':nome,
    'email':email,
@@ -98,7 +92,7 @@ else{
     // Função para criar um novo usuário (sem gerar o token)
     const createUser = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/auth/', {
+            const response = await fetch('http://127.0.0.1:8000/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -113,11 +107,17 @@ else{
             });
 
             if (response.ok) {
-                const data = await response.json();
-
+              const data = await response.json();
+              box_mensagem("Usuário criado com Sucesso!", "success");
+            
+          
+              // Aguarda 2 segundos antes de redirecionar
+              setTimeout(() => {
                 console.log('Usuário criado com sucesso!');
                 console.log('Username:', data.username);
-                return box_mensagem("Usuario criado com Sucesso!", "success");
+            }, 20000)
+                window.location.href = "login.html";
+
             } else {
                 const errorData = await response.json();
                 console.log('Erro ao criar usuário:', errorData);

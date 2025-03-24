@@ -5,118 +5,81 @@ window.onload = function() {
 };
 
 
+function box_mensagem(mensagem, type){
+  if(type == "erro"){
+    title = "Atenção!";
 
-
-const preFlightRequest = async () => {
-  try {
-      const response = await fetch('http://127.0.0.1:8000/auth/token', {
-          method: 'OPTIONS',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer'  // Exemplo de header personalizado
-          }
-      });
-
-      if (response.ok) {
-          console.log("Pre-flight aprovado!");
-      } else {
-          console.error("Pre-flight falhou:", response.status);
-      }
-  } catch (error) {
-      console.error("Erro na requisição pre-flight:", error);
+  
+  }if(type == "success"){
+    title = "Sucesso"
+  
+  
+  }if(type == "aviso"){
+    title = "Aviso";
   }
-};
-
-// Chama o pre-flight ao carregar a página
-window.onload = preFlightRequest;
-
-
-
+  document.getElementById("title_box_alert").innerHTML = title;
+  document.getElementById("alert").innerHTML = mensagem;
+  document.getElementById("alert").style.color = "#2f2841";
+  button = document.getElementById("button_box_alert");
+  button.style.backgroundColor = "#2f2841";
+  button.style.color = "white";
+  button.addEventListener('mouseover', () => {
+    button.style.backgroundColor = "black";  
+  });
+  
+  button.addEventListener('mouseout', () => {
+    button.style.backgroundColor = "#2f2841";  
+  });
+  
+  document.getElementById("box-alert").style.display = "flex";
+  }
 
 document.getElementById("loginForm").addEventListener("submit", async function (event) {
   event.preventDefault(); // Impede o envio tradicional do formulário
-  
-  const formData = new URLSearchParams();
-  formData.append("username", document.getElementById("nomeForm").value);
-  formData.append("password", document.getElementById("senhaForm").value);
+  username =  document.getElementById("nomeForm").value;
+  password = document.getElementById("senhaForm").value;
  
+ console.log(username, password)
 
+ 
+ try {
+  const response = await fetch('http://127.0.0.1:8000/login', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          username,  
+          password  
+      }),
+  });
 
-    try {
-      for (let i = 0; i < 16; i++) {
-        console.log("Número:", i);
-        
-      const response = await fetch("http://127.0.0.1:8000/auth/token/", {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: formData
-      });
-  
-      if (!response.ok && i === 5) {
-        throw new Error("Usuário inexistente ou senha incorreta");
-      }
-  
+  if (response.ok) {
       const data = await response.json();
-  
-      if (data.access_token) {
-        
-        localStorage.setItem("token", data.access_token);
-        localStorage.setItem("username", data.username);
-        console.log("Token salvo:", localStorage.getItem("token"));
-        console.log("Parando o loop!");
+      console.log("Sucesso:", data);
+      localStorage.setItem("token", data.access_token);
+      localStorage.setItem("username", data.username);
       
-        window.location.href = "main.html";
-        break;
-      } 
+      window.location.href = "main.html"; 
       
-      else {
-          throw new Error("Token não recebido. Verifique o servidor.");
-      }}//fim do loop
-  
-    } catch (error) {
-      console.error("Erro:", error.message);
-      document.getElementById("alert").innerHTML = error.message;
-      document.getElementById("box-alert").style.display = "flex";
-    }
-    }
-  
-  );
-
-
- 
-  // Função para fazer login e obter o token
-  const loginAndGetToken = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:8000/auth/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          username:  nome,  // Nome de usuário que você criou
-          password: senha,    // Senha
-        }),
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        const token = data.access_token;
-        console.log('Token gerado:', token);
-  
-        // Agora que você tem o token, pode usá-lo para acessar rotas protegidas
-        getProtectedData(token);
-      } else {
-        const errorData = await response.json();
-        console.log('Erro ao obter token:', errorData);
+  } else {
+      // Captura o detalhe do erro vindo do FastAPI
+      const errorData = await response.json();
+      let type = "erro";
+      if (errorData.detail === "Senha incorreta."){
+        type = "aviso"
       }
-    } catch (error) {
-      console.error('Erro na requisição de login:', error);
-    }
-  };
+      console.error("Erro:", errorData.detail);
+      return box_mensagem(`${errorData.detail}`, type);
+    
+  }
 
+} catch (error) {
+  console.error("Erro na conexão:", error);
+  return box_mensagem("Erro na conexão com o servidor, porfavor tente mais tarde!", "aviso");
 
+}
+});
 
 function close_box_message(){
     document.getElementById("box-alert").style.display = "none";
