@@ -3,7 +3,6 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlmodel import Session, SQLModel
-
 from src.models.models import *
 
 
@@ -49,3 +48,5 @@ async def user(user: user_dependency, db: db_dependency):
     if user is None:
         raise HTTPException(status_code=401, detail = 'Authentication Faile')
     return {"User": user}
+
+#uvicorn app:app --reload
