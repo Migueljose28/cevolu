@@ -7,11 +7,11 @@ POST http://127.0.0.1:8000/create
 Content-Type: application/json
 
 {
-  "username": "nomeDeUsuario",  
+  "username": "Miguel",  
   "email": "email@example.com",
   "phone": "1234567890",
   "cpf_cnpj": "12345678901234",
-  "password": "minhasenha"
+  "password": "n"
 }
 
 ###
@@ -19,7 +19,15 @@ POST http://127.0.0.1:8000/login
 Content-Type: application/json
 
 {
-  "username": "nomeDeUsuario",  
-  "password": "minhasenha"
+  "username": "n",  
+  "password": "n"
 }
 
+###
+POST http://127.0.0.1:8000/add
+Content-Type: application/json
+
+{
+  "token": "token",
+  "nPaginas": "1"
+}

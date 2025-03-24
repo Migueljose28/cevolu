@@ -27,21 +27,24 @@ async def create_user(db,
 
 
 async def login_for_access_token(form_data, db):
-    user = authenticate_user(form_data.username, form_data.password, db)
-    if not user:
-        raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED, detail= 'Could not validate user.')
-    token = create_access_token(user.username, user.id, timedelta(minutes = 1))
+    auth_result = authenticate_user(form_data.username, form_data.password, db)
+    if not auth_result["success"]:
+        raise HTTPException(status_code=400, detail=auth_result["message"])
+    if not auth_result["success"] and auth_result["message"] == "Senha incorreta.":
+        raise HTTPException(status_code=400, detail=auth_result["message"])
+    token = create_access_token(auth_result["user"].username,auth_result["user"].id, timedelta(minutes = 9999))
     return {"username" : form_data.username, 'access_token': token, 'token_type': 'bearer'}
 
 
 def authenticate_user(username: str, password: str, db):
     user = db.query(Users).filter(Users.username == username).first()
     if not user:
-        return False
-    if not bcrypt_context.verify(password, user.hashed_password):
-        return False
-    return user
+        return {"success": False, "message": "Usuário não encontrado."}
 
+    if not bcrypt_context.verify(password, user.hashed_password):
+        return {"success": False, "message": "Senha incorreta."}
+
+    return {"success": True, "user": user, "message": "Login realizado com sucesso!"}
 
 
 def create_access_token(username: str, user_id: int, expires_delta: timedelta):
