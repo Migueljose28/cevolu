@@ -26,8 +26,8 @@ async def create_user(db,
 
 
 
-async def login_for_access_token(form_data, response, db):
 
+async def login_for_access_token(form_data, response, db):
     auth_result = authenticate_user(form_data.username, form_data.password, db)
     if not auth_result["success"]:
         raise HTTPException(status_code=400, detail=auth_result["message"])
