@@ -26,15 +26,24 @@ async def create_user(db,
 
 
 
-async def login_for_access_token(form_data, db):
+async def login_for_access_token(form_data, response, db):
+
     auth_result = authenticate_user(form_data.username, form_data.password, db)
     if not auth_result["success"]:
         raise HTTPException(status_code=400, detail=auth_result["message"])
-    if not auth_result["success"] and auth_result["message"] == "Senha incorreta.":
-        raise HTTPException(status_code=400, detail=auth_result["message"])
-    token = create_access_token(auth_result["user"].username,auth_result["user"].id, timedelta(minutes = 9999))
-    return {"username" : form_data.username, 'access_token': token, 'token_type': 'bearer'}
-
+    token = create_access_token(
+        auth_result["user"].username,
+        auth_result["user"].id,
+        timedelta(minutes=9999)
+    )
+    response.set_cookie(
+        key="access_token",
+        value=token,
+        httponly=True,
+        samesite="None",
+        secure=True
+    )
+    return {"username": form_data.username, "access_token": token, "token_type": "bearer"}
 
 def authenticate_user(username: str, password: str, db):
     user = db.query(Users).filter(Users.username == username).first()

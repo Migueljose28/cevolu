@@ -5,7 +5,7 @@ from src.schemas import Token, UsersRegister, Userslogin
 from src.controllers import create_user, login_for_access_token
 from src.schemas import UsersRegister
 from src.database import db_dependency
-
+from fastapi import APIRouter, HTTPException, Response, Depends
 
 
 router = APIRouter()
@@ -16,6 +16,6 @@ async def register_route(db: db_dependency,create_user_request: UsersRegister):
 
 
 @router.post("/login", response_model=Token)
-async def login_route(form_data: Userslogin ,db: db_dependency):
-    return await login_for_access_token(form_data, db)
-                                       
+async def login_route(form_data: Userslogin, response: Response, db: db_dependency):
+    return await login_for_access_token(form_data, response, db)
+
