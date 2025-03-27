@@ -1,15 +1,35 @@
+let sidebar = document.getElementById('sidebar-multi-level-sidebar')
+
+ // Função que será chamada quando o mouse estiver perto do lado esquerdo da tela
+ function opensidebar(opensidebar) {
+ document.getElementById(opensidebar).classList.toggle('-translate-x-full');
+  console.log("Mouse está no final da tela à esquerda!");
+}
+function closesiedeBar(closesidebar){
+  document.getElementById(closesidebar).classList.add('-translate-x-full');
+}
+
+document.addEventListener('mousemove', function(event) {
+  const mouseX = event.clientX;
+  if (mouseX < 10) {
+    if (sidebar.classList.contains('-translate-x-full')) {
+    opensidebar('sidebar-multi-level-sidebar'); 
+    }
+
+  }
+});
 
 
 // Selecionar o botão, o sidebar e o conteúdo
 const sidebarToggle = document.getElementById('sidebar_button');
-const sidebar = document.getElementById('sidebar-multi-level-sidebar');
 
 sidebarToggle.addEventListener('click', (event) => {
-  sidebar.classList.toggle('-translate-x-full');
+  opensidebar('sidebar-multi-level-sidebar');
 });
+
 document.addEventListener('click', (event) => {
   if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
-    sidebar.classList.add('-translate-x-full');
+    closesiedeBar('sidebar-multi-level-sidebar');
   }
 });
 

@@ -36,31 +36,32 @@ function box_mensagem(mensagem, type){
 
 document.getElementById("loginForm").addEventListener("submit", async function (event) {
   event.preventDefault(); // Impede o envio tradicional do formulário
-  username =  document.getElementById("nomeForm").value;
-  password = document.getElementById("senhaForm").value;
- 
- console.log(username, password)
+  const formData = new URLSearchParams();
+  formData.append("username", document.getElementById("nomeForm").value);
+  formData.append("password", document.getElementById("senhaForm").value);
 
- 
+
+ for(let i = 0; i < 3; i++){
+  console.log("Tentativa de login: ", i);
+
  try {
   const response = await fetch('http://127.0.0.1:8000/login', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json',
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: JSON.stringify({
-          username,  
-          password  
-      }),
+      body: formData
   });
 
   if (response.ok) {
+
       const data = await response.json();
       console.log("Sucesso:", data);
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("username", data.username);
-      
       window.location.href = "main.html"; 
+      break;
+      
       
   } else {
       // Captura o detalhe do erro vindo do FastAPI
@@ -75,11 +76,20 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   }
 
 } catch (error) {
+
+
+  if(i === 3){
   console.error("Erro na conexão:", error);
   return box_mensagem("Erro na conexão com o servidor, porfavor tente mais tarde!", "aviso");
 
+}else{
+  continue;
 }
+}};
+
 });
+
+
 
 function close_box_message(){
     document.getElementById("box-alert").style.display = "none";
