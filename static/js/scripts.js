@@ -1,4 +1,8 @@
 //variaveis
+let cevolu = "https://api.cevolu.com.br";
+let localhost = "http://127.0.0.1:8000";
+
+
 let valor = 0;
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
 var pdfDoc = null;
@@ -7,17 +11,38 @@ var container = document.getElementById('pdf-container');
 let pdf = "pdf"
 
 
+let sidebar = document.getElementById('sidebar-multi-level-sidebar')
+
+ // Função que será chamada quando o mouse estiver perto do lado esquerdo da tela
+ function opensidebar(opensidebar) {
+ document.getElementById(opensidebar).classList.toggle('-translate-x-full');
+  console.log("Mouse está no final da tela à esquerda!");
+}
+function closesiedeBar(closesidebar){
+  document.getElementById(closesidebar).classList.add('-translate-x-full');
+}
+
+document.addEventListener('mousemove', function(event) {
+  const mouseX = event.clientX;
+  if (mouseX < 10) {
+    if (sidebar.classList.contains('-translate-x-full')) {
+    opensidebar('sidebar-multi-level-sidebar'); 
+    }
+
+  }
+});
+
 
 // Selecionar o botão, o sidebar e o conteúdo
 const sidebarToggle = document.getElementById('sidebar_button');
-const sidebar = document.getElementById('sidebar-multi-level-sidebar');
 
 sidebarToggle.addEventListener('click', (event) => {
-  sidebar.classList.toggle('-translate-x-full');
+  opensidebar('sidebar-multi-level-sidebar');
 });
+
 document.addEventListener('click', (event) => {
   if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
-    sidebar.classList.add('-translate-x-full');
+    closesiedeBar('sidebar-multi-level-sidebar');
   }
 });
 
@@ -26,8 +51,12 @@ document.getElementById("dropdown-button_banco_de_talento").addEventListener("cl
     const dropdown = document.getElementById("dropdown_banco_de_talento");
     dropdown.classList.toggle("hidden");
   });
-  
 
+  document.getElementById("dropdown-button_pro").addEventListener("click", () => {
+    const dropdown = document.getElementById("dropdown_pro");
+    dropdown.classList.toggle("hidden");
+  });
+  
 //token and username
 let username = localStorage.getItem("username");
 let token = localStorage.getItem("token");
@@ -36,8 +65,8 @@ nomeUsuario.textContent = username ? username : '';
 
 async function verificarAutenticacao() {
   // Obtém o token do localStorage
-  var valor = 0;
-  atualizarValor(valor);
+  //var valor = 0;
+  //atualizarValor(valor);
   if (!token) {
     
     window.location.href = "login.html"; // Redireciona para a página de login
@@ -157,4 +186,90 @@ document.getElementById('pdf-container').addEventListener('contextmenu', functio
        }
      });
 
-     
+    
+     function box_mensagem(mensagem, type){
+      if(type == "erro"){
+        title = "Atenção!";
+    
+      
+      }if(type == "success"){
+        title = "Sucesso"
+      
+      
+      }if(type == "aviso"){
+        title = "Aviso";
+      }
+      document.getElementById("title_box_alert").innerHTML = title;
+      document.getElementById("title_box_alert").style.color ="black";
+      document.getElementById("alert").innerHTML = mensagem;
+      document.getElementById("alert").style.color = "black";
+      button = document.getElementById("button_box_alert");
+      button.style.backgroundColor = "#2f2841";
+      button.style.color = "white";
+      button.addEventListener('mouseover', () => {
+        button.style.backgroundColor = "black";  
+      });
+      
+      button.addEventListener('mouseout', () => {
+        button.style.backgroundColor = "#2f2841";  
+      });
+      
+      document.getElementById("box-alert").style.display = "flex";
+      }
+
+  document.getElementById("selecionarCurriculos").addEventListener("click", async function (event) {
+    event.preventDefault(); 
+      //const lista = str.split(",").map(Number);
+
+
+      try{
+        token = localStorage.getItem("token")
+        const response = await fetch(`${cevolu}/read`,{ 
+          method: "GET",
+          headers: {
+              "Authorization": `Bearer ${token}`
+          },
+        });
+        const data = await response.json();
+        if(response.ok){
+             
+        if(data.error){
+          return data.error
+        }
+       else{
+      const lista = data.mensagem.split(",").map(Number); 
+      lista.push(valor);
+      let novaString = lista.join(",");
+      console.log(novaString); 
+      return enviarAlteration(novaString)
+      }}
+      }finally{
+        return {"aaaaaaaaa" :"errrorororororor"}
+      }
+
+    });
+
+async function enviarAlteration(nPaginas){
+  
+      try{
+        const response = await fetch(`${cevolu}/update`, {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              token,
+              nPaginas  
+          }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        
+        return box_mensagem("Selecionado com Sucesso", "success");
+      }
+    
+      }catch{
+          return {"erro": "erro de catch"}
+      }
+    };

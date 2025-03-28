@@ -10,9 +10,7 @@
     transition: opacity 2s ease-in-out; 
 } 
 
-#box-alert{
-    display: none;
-}
+
 
 .right-login {
     width: 50%;

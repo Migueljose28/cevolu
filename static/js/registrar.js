@@ -1,30 +1,13 @@
+let cevolu = "https://api.cevolu.com.br";
+let localhost = "http://127.0.0.1:8000";
+
+
 window.onload = function() {
   setTimeout(function() {
       document.body.style.opacity = 1;
   }, 1000); // Atraso de 1 segundo
 };
 
-// Função para acessar dados protegidos usando o token
-const getProtectedData = async (token) => {
-  try {
-    const response = await fetch('http://127.0.0.1:8000/User/', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,  // Incluindo o token no cabeçalho
-      },
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log('Acesso autorizado:', data);
-    } else {
-      const errorData = await response.json();
-      console.log('Erro de autorização:', errorData);
-    }
-  } catch (error) {
-    console.error('Erro na requisição protegida:', error);
-  }
-};
 
 
 
@@ -92,7 +75,7 @@ else{
     // Função para criar um novo usuário (sem gerar o token)
     const createUser = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/create', {
+            const response = await fetch(`${cevolu}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -120,6 +103,7 @@ else{
 
             } else {
                 const errorData = await response.json();
+                box_mensagem("Erro ao criar usuário! Por favor, tente mais tarde.", "erro");
                 console.log('Erro ao criar usuário:', errorData);
             }
         } catch (error) {
