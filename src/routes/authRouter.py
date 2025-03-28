@@ -12,7 +12,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 router = APIRouter()
 
-@router.post("/create", status_code= status.HTTP_201_CREATED)
+@router.post("/register", status_code= status.HTTP_201_CREATED)
 async def register_route(db: db_dependency,create_user_request: UsersRegister):
     return await create_user(db, create_user_request)
 

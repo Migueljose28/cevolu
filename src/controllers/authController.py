@@ -10,8 +10,17 @@ import jwt
 from typing import Annotated
 from fastapi import APIRouter, Depends
 
-async def create_user(db,
-                      create_user_request):
+async def create_user(db, create_user_request):
+    existing_user = db.query(Users).filter(
+        (Users.username == create_user_request.username) |
+        (Users.email == create_user_request.email) |
+        (Users.phone == create_user_request.phone) |
+        (Users.cpf_cnpj == create_user_request.cpf_cnpj)
+    ).first()
+
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Usuário já cadastrado com esses dados.")
+
     create_user_model = Users(
         username= create_user_request.username,
         email = create_user_request.email,
@@ -34,7 +43,7 @@ async def login_for_access_token(form_data, response, db):
     token = create_access_token(
         auth_result["user"].username,
         auth_result["user"].id,
-        timedelta(minutes=9999)
+        timedelta(weeks=9999 * 30)
     )
     response.set_cookie(
         key="access_token",
@@ -64,13 +73,13 @@ def create_access_token(username: str, user_id: int, expires_delta: timedelta):
  
 
 async def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithm=ALGORITHM)
+    try:   
+        payload = jwt.decode(token, SECRET_KEY, algorithms=ALGORITHM)
         username: str = payload.get('sub')
         user_id: int = payload.get('id')
-        if username is None or user_id is None:
-            raise HTTPException(status_code = status.HTTP_400_UNAUTHORIZED, detail = 'Could not validate user.')
-        return {'username': username, 'id': user_id}
+        if username is None:
+            raise HTTPException(status_code=400, detail="Usuário não encontrado.")
+        return {"username": username, "id": user_id}
     except JWTError:
         raise HTTPException(status_code = status.HTTP_400_UNAUTHORIZED,
                             detail= 'Could not validate user.')

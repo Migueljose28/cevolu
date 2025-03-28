@@ -28,7 +28,7 @@ app.include_router(router_curriculos)
 
 def init_db():
     SQLModel.metadata.create_all(bind=engine)
-
+    
 @app.on_event("startup")
 def on_startup():
     init_db()

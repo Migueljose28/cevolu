@@ -11,7 +11,7 @@ senha_escapada = urllib.parse.quote_plus(senha)
 
 # Configuração do banco de dados
 mysql_url = f'mysql+pymysql://u630267573_user:{senha_escapada}@cevolu.com.br/u630267573_database'
-SQLALCHEMY_DATABASE_URL = "sqlite:///database.db"
+SQLALCHEMY_DATABASE_URL = mysql_url
 #"sqlite:///database.db"
 
 
