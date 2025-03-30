@@ -7,10 +7,10 @@ POST http://127.0.0.1:8000/register
 Content-Type: application/json
 
 {
-  "username": "Jose",  
+  "username": "jose",  
   "email": "migueljose28@gmail.com",
-  "phone": "11111111",
-  "cpf_cnpj": "1111111111111",
+  "phone": "111171111",
+  "cpf_cnpj": "11111711111",
   "password": "n"
 }
 

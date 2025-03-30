@@ -20,7 +20,7 @@ async def create_user(db, create_user_request):
 
     if existing_user:
         raise HTTPException(status_code=400, detail="Usuário já cadastrado com esses dados.")
-
+        
     create_user_model = Users(
         username= create_user_request.username,
         email = create_user_request.email,
