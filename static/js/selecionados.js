@@ -1,5 +1,5 @@
 let cevolu = "https://api.cevolu.com.br";
-let localhost = "http://127.0.0.1:8000";
+let cevolu99 = "http://127.0.0.1:8000";
 
 let valor = 0;
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
@@ -12,7 +12,7 @@ let sidebar = document.getElementById('sidebar-multi-level-sidebar')
  // Função que será chamada quando o mouse estiver perto do lado esquerdo da tela
  function opensidebar(opensidebar) {
  document.getElementById(opensidebar).classList.toggle('-translate-x-full');
-  console.log("Mouse está no final da tela à esquerda!");
+
 }
 function closesiedeBar(closesidebar){
   document.getElementById(closesidebar).classList.add('-translate-x-full');
@@ -82,7 +82,7 @@ document.getElementById("dropdown-button_banco_de_talento").addEventListener("cl
       document.getElementById("pdf-container").innerHTML = `${lista} currículo encontrado`;
     }
     else{
-      document.getElementById("pdf-container").innerHTML = `${lista.length} currículo encontrado, passe para analiza-los`;
+      document.getElementById("pdf-container").innerHTML = `${lista.length-1} currículo encontrado, passe para analiza-los`;
     }
       localStorage.setItem("title", data.title);
       localStorage.setItem("lista", data.mensagem);
@@ -229,8 +229,7 @@ function logout(){
        console.log(valor);
       return null;
     
-    //lista.push(valor);
-    //let novaString = lista.join(",");
+   
     
    
   }
@@ -278,10 +277,12 @@ document.getElementById('pdf-container').addEventListener('contextmenu', functio
 
 
 document.getElementById("form").addEventListener("submit", async function (event) {
-    event.preventDefault(); // Impede o envio tradicional do formulário
+   // Impede o envio tradicional do formulário
     title = document.getElementById("title").value;
-  
     token = localStorage.getItem("token");
+    for(let i = 0; i < 3; i++){
+      console.log(i)
+      try{
       const response = await fetch(`${cevolu}/create`, {
         method: 'POST',
                   headers: {
@@ -298,17 +299,23 @@ document.getElementById("form").addEventListener("submit", async function (event
         const data = await response.json();
         console.log('Acesso autorizado:', data);
         localStorage.getItem("title", title);
-      }else{
-        console.log("ahahahah");
+        break;
       }
- 
-
+      continue;
+    }catch{
+      console.log("deu erro");
+      continue;
+    }
+  }
 });
 
 document.getElementById("deletarAll").addEventListener("click", async function (event) {
-  event.preventDefault(); 
-
     token = localStorage.getItem("token");
+
+    for(let i = 0; i < 3; i++){
+      
+    try{
+      console.log(i);
     const response = await fetch(`${cevolu}/deleteAll`, {
       method: 'DELETE',
                 headers: {
@@ -322,12 +329,18 @@ document.getElementById("deletarAll").addEventListener("click", async function (
 
     if (response.ok) {
       const data = await response.json();
-      console.log("DELETEDO COM SUCESSO");
+      console.log("DELETEDO COM SUCESSO", data);
+      getTableCurriculos();
+      location.reload();
+      break;
      
     }else{
       console.log("ahahahah ERRO, NÃO FOI DELETADP");
     }
-
-
+  }catch{
+    console.error("erro ao tentar realizar a requisição");
+    continue;
+  }
+}
 });
 

@@ -1,7 +1,7 @@
 //variaveis
 let cevolu = "https://api.cevolu.com.br";
 let localhost = "http://127.0.0.1:8000";
-
+let cevoluu = "http://127.0.0.1:8000";
 
 let valor = 0;
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
@@ -16,7 +16,7 @@ let sidebar = document.getElementById('sidebar-multi-level-sidebar')
  // Função que será chamada quando o mouse estiver perto do lado esquerdo da tela
  function opensidebar(opensidebar) {
  document.getElementById(opensidebar).classList.toggle('-translate-x-full');
-  console.log("Mouse está no final da tela à esquerda!");
+
 }
 function closesiedeBar(closesidebar){
   document.getElementById(closesidebar).classList.add('-translate-x-full');
@@ -218,10 +218,11 @@ document.getElementById('pdf-container').addEventListener('contextmenu', functio
       }
 
   document.getElementById("selecionarCurriculos").addEventListener("click", async function (event) {
-    event.preventDefault(); 
+    
       //const lista = str.split(",").map(Number);
 
-
+      for(let i = 0; i < 3; i++){
+        console.log("contagem do i", i)
       try{
         token = localStorage.getItem("token")
         const response = await fetch(`${cevolu}/read`,{ 
@@ -232,25 +233,30 @@ document.getElementById('pdf-container').addEventListener('contextmenu', functio
         });
         const data = await response.json();
         if(response.ok){
-             
+          
         if(data.error){
-          return data.error
+          box_mensagem(data.error, "erro")
         }
+        
        else{
       const lista = data.mensagem.split(",").map(Number); 
       lista.push(valor);
       let novaString = lista.join(",");
       console.log(novaString); 
-      return enviarAlteration(novaString)
-      }}
-      }finally{
-        return {"aaaaaaaaa" :"errrorororororor"}
+      enviarAlteration(novaString)
+      break;
       }
-
+    }
+      }catch{
+        console.log("erro");
+        continue;
+      }
+    }
     });
 
 async function enviarAlteration(nPaginas){
-  
+  for(let i = 0; i < 3; i++){
+
       try{
         const response = await fetch(`${cevolu}/update`, {
           method: 'PUT',
@@ -265,11 +271,23 @@ async function enviarAlteration(nPaginas){
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data)
+        box_mensagem("Selecionado com Sucesso", "success");
+        break;
         
-        return box_mensagem("Selecionado com Sucesso", "success");
       }
-    
+      else{
+
+        console.log("ssssssssssaaaaaaaaaaaaaaa")
+        continue;
+      }
       }catch{
           return {"erro": "erro de catch"}
       }
-    };
+    }};
+
+
+    function close_box_message(){
+      document.getElementById("box-alert").style.display = "none";
+    }
+    

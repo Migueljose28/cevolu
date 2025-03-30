@@ -1,6 +1,6 @@
 let cevolu = "https://api.cevolu.com.br";
 let localhost = "http://127.0.0.1:8000";
-
+let cevolua = "http://127.0.0.1:8000";
 
 window.onload = function() {
   setTimeout(function() {
@@ -74,7 +74,10 @@ else{
   
     // Função para criar um novo usuário (sem gerar o token)
     const createUser = async () => {
+      for(let i = 0; i < 3; i++){
         try {
+        
+            console.log(i);
             const response = await fetch(`${cevolu}/register`, {
                 method: 'POST',
                 headers: {
@@ -99,16 +102,22 @@ else{
                 console.log('Usuário criado com sucesso!');
                 console.log('Username:', data.username);
             }, 20000)
-                window.location.href = "login.html";
-
+                //window.location.href = "login.html";
+                break;
             } else {
                 const errorData = await response.json();
-                box_mensagem("Erro ao criar usuário! Por favor, tente mais tarde.", "erro");
+                box_mensagem(`Erro ao criar usuário! ${errorData.detail}`, "erro");
                 console.log('Erro ao criar usuário:', errorData);
+                if(i === 3){
+                  box_mensagem(`Erro ao criar usuário! porfavor tente mais tarde.`, "erro");
+                }
+                continue;
+                
             }
-        } catch (error) {
+        }catch (error) {
             console.error('Erro na requisição:', error);
         }
+      }
     };
 
     // CHAMANDO A FUNÇÃO PARA CRIAR O USUÁRIO
