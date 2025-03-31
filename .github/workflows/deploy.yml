@@ -20,6 +20,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./"  # Pasta local que será enviada
           server-dir: "/public_html/"  # Caminho no servidor
+          protocol: ftp
           exclude: |
             **/index.html
             **/.git*
