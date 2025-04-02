@@ -1,6 +1,6 @@
-let cevolu = "https://api.cevolu.com.br";
+let cevolua = "https://api.cevolu.com.br";
 let localhost = "http://127.0.0.1:8000";
-let cevolua = "http://127.0.0.1:8000";
+let cevolu = "http://127.0.0.1:8000";
 
 window.onload = function() {
   setTimeout(function() {
@@ -102,7 +102,7 @@ else{
                 console.log('Usuário criado com sucesso!');
                 console.log('Username:', data.username);
             }, 20000)
-                //window.location.href = "login.html";
+                window.location.href = "login.html";
                 break;
             } else {
                 const errorData = await response.json();

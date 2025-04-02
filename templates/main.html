@@ -8,7 +8,6 @@
     <link rel="stylesheet" id="css-file" href="/static/css/index.css">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
    
-    
    <link rel="shortcut icon" type="imagex/png" href="/static/img/logo.png">
     <style>
         main {
@@ -34,6 +33,7 @@
           margin-bottom: 20px; /* Espaço entre as páginas */
           border-bottom: 1px solid #ddd;
         }
+      
       </style>
 </head>
 <body>
@@ -63,33 +63,30 @@
 
      
 
-    <aside id="sidebar-multi-level-sidebar" class=" fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full overflow-hidden" aria-label="Sidebar">
-      <div class="h-full px-3 py-4 overflow-y-auto bg-[#201b2c]" >
+    <aside id="sidebar-multi-level-sidebar" class=" fixed top-0  left-0 z-40 w-64 h-screen  transition-transform -translate-x-full rounded-r-2xl overflow-hidden" aria-label="Sidebar">
+      <div class="h-full px-3 py-4 overflow-y-auto   bg-[#201b2c]" ><!--bg-[#201b2c]-->
 
          <img src="../static/img/logo.png" alt="" class="w-30 h-30 mx-auto ">
          <ul class="space-y-2 font-medium">
-           
-    
-            <li>
-              <section  class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                  <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+       
+           <!-- <li>
+               <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                       <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                    </svg>
-                    <span  id="dropdown-button_banco_de_talento" class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Todos os Curriculos</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                    </svg>
-              </section>
+                  <span class="flex-1 ms-3 whitespace-nowrap" >Inicio</span>
+               </a>
+            </li>
+           </li>-->
 
-              <ul id="dropdown_banco_de_talento" class="hidden py-2 space-y-2">
-                    <li>
-                       <a href="/templates/main.html" class="flex items-center w-full p-2 bg-[#91b72e]  text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Curriculos</a>
-                    </li>
-                    <li>
-                       <a href="/templates/Selecionados.html" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Selecionados</a>
-                    </li>
-                  
-              </ul>
+              <li>
+               <a href="main.html" class="flex items-center p-2   rounded-lg dark:text-white bg-gray-100 text-black dark:hover:bg-gray-700 group">
+                 <svg class="shrink-0 w-5 h-5  transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                      <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                   </svg>
+                  <span class="flex-1 ms-3 whitespace-nowrap text-gray-500">Todos os Curriculos</span>
+               </a>
+            </li>
            </li>
          
 
@@ -130,7 +127,7 @@
   
 </li>
             
-            <li>
+            <li >
                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
@@ -139,7 +136,7 @@
                </a>
             </li>
             
-         </ul>
+        
       </div>
    </aside>
    
@@ -168,7 +165,7 @@
        <button id="button_box_alert" type="button" class="bg-red-500 p-3 rounded-2xl shadow-xl text-center hover:bg-red-800 w-full " onclick="close_box_message()">Fechar</button>
    </div>
 </div>
-<footer class="flex justify-center p-9 "><button id="selecionarCurriculos">Selecionar Curriculos</button></footer>
+<footer class="flex justify-center p-9 "> <!--<button id="selecionarCurriculos">Selecionar Curriculos</button>--></footer>
 
 
 <script id="js-file" src="/static/js/scripts.js"></script>

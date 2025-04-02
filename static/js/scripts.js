@@ -1,7 +1,7 @@
 //variaveis
-let cevolu = "https://api.cevolu.com.br";
+let cevolua = "https://api.cevolu.com.br";
 let localhost = "http://127.0.0.1:8000";
-let cevoluu = "http://127.0.0.1:8000";
+let cevolu = "http://127.0.0.1:8000";
 
 let valor = 0;
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
@@ -46,11 +46,7 @@ document.addEventListener('click', (event) => {
   }
 });
 
-//Dorpdown banco_de_talento
-document.getElementById("dropdown-button_banco_de_talento").addEventListener("click", () => {
-    const dropdown = document.getElementById("dropdown_banco_de_talento");
-    dropdown.classList.toggle("hidden");
-  });
+
 
   document.getElementById("dropdown-button_pro").addEventListener("click", () => {
     const dropdown = document.getElementById("dropdown_pro");
@@ -76,10 +72,10 @@ async function verificarAutenticacao() {
   console.log(username, token)
 
 function logout(){
-  localStorage.removeItem("token");
-  localStorage.removeItem("username");
-  window.location.href = "login.html"; 
-  console.log("Ahhhahahahaha")
+  //localStorage.removeItem("token");
+  //localStorage.removeItem("username");
+  window.location.href = "paginicial.html"; 
+  console.log("logout")
 }
 
 document.addEventListener("DOMContentLoaded", function() {

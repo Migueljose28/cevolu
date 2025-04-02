@@ -1,5 +1,5 @@
-let cevolu = "https://api.cevolu.com.br";
-let cevolu99 = "http://127.0.0.1:8000";
+let cevolua = "https://api.cevolu.com.br";
+let cevolu = "http://127.0.0.1:8000";
 
 let valor = 0;
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
@@ -48,7 +48,10 @@ document.getElementById("dropdown-button_banco_de_talento").addEventListener("cl
     dropdown.classList.toggle("hidden");
   });
   
-
+  document.getElementById("dropdown-button_pro").addEventListener("click", () => {
+    const dropdown = document.getElementById("dropdown_pro");
+    dropdown.classList.toggle("hidden");
+  });
 
 
 

@@ -1,7 +1,7 @@
 
-let cevolu = "https://api.cevolu.com.br";
+let cevolua = "https://api.cevolu.com.br";
 let localhost = "http://127.0.0.1:8000";
-let cevolua = "http://127.0.0.1:8000";
+let cevolu = "http://127.0.0.1:8000";
 
 window.onload = function() {
   setTimeout(function() {
@@ -40,17 +40,20 @@ function box_mensagem(mensagem, type){
   }
 
 document.getElementById("loginForm").addEventListener("submit", async function (event) {
+
   event.preventDefault(); // Impede o envio tradicional do formulário
   const formData = new URLSearchParams();
   formData.append("username", document.getElementById("nomeForm").value);
   formData.append("password", document.getElementById("senhaForm").value);
 
 
+
  for(let i = 0; i < 3; i++){
   console.log("Tentativa de login: ", i);
 
  try {
-  const response = await fetch(`${cevolu}/login`, {
+  
+  const response = await fetch(`http://127.0.0.1:8000/login`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -64,7 +67,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
       console.log("Sucesso:", data);
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("username", data.username);
-      window.location.href = "main.html"; 
+      window.location.href = "paginicial.html"; 
       break;
       
       
@@ -87,9 +90,10 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   console.error("Erro na conexão:", error);
   return box_mensagem("Erro na conexão com o servidor, porfavor tente mais tarde!", "aviso");
 
-}else{
-  continue;
 }
+  console.error("Deu erro na requisição",error)
+  continue;
+
 }};
 
 });

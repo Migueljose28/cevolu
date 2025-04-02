@@ -1,0 +1,55 @@
+GET http://127.0.0.1:8000/start
+
+
+####
+
+POST http://127.0.0.1:8000/register
+Content-Type: application/json
+
+{
+  "username": "jose",  
+  "email": "migueljose28@gmail.com",
+  "phone": "111171111",
+  "cpf_cnpj": "11111711111",
+  "password": "n"
+}
+
+###
+POST  http://127.0.0.1:8000/login
+Content-Type: application/x-www-form-urlencoded
+
+username=aaa&password=a
+
+
+#Curriculos###
+###
+POST  http://127.0.0.1:8000/create
+Content-Type: application/json
+
+{
+"title": "Auxiliar de Escritório",
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb3NlIiwiaWQiOjQsImV4cCI6MTgzMTY0OTU3NDgyfQ.4_KWpwvHstBsz0bK-gHp5xhf-FA5oVhpyroxFs2XR-E"
+}
+
+###
+GET  http://127.0.0.1:8000/read
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb3NlIiwiaWQiOjQsImV4cCI6MTgzMTY0OTU3NDgyfQ.4_KWpwvHstBsz0bK-gHp5xhf-FA5oVhpyroxFs2XR-E
+###
+PUT  http://127.0.0.1:8000/update
+Content-Type: application/json
+ 
+{
+
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb3NlIiwiaWQiOjksImV4cCI6MTgzMTY1MDIzNTk2fQ.nOPPFVlQI0p9c-GXQpu0PyqCQQqTAG1F3M1AP51wjDQ",
+"nPaginas": "11"
+}
+
+###
+DELETE http://127.0.0.1:8000/deleteAll
+Content-Type: application/json
+
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYWEiLCJpZCI6NiwiZXhwIjoxODMxNjUwMjc2NzR9.XzMNtr8szdpB8QnVQDsvIYQRH9Imz5bajpyRMCtJtFY"
+
+
+}
