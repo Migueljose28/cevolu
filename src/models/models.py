@@ -2,6 +2,8 @@ from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
 from typing import List, Optional
 
+
+
 class Users(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     username: str = Field(index=True)
@@ -11,8 +13,10 @@ class Users(SQLModel, table=True):
     hashed_password: str = Field(index=True)
     is_logged_in: bool = Field(default=False)
     is_active: bool = Field(default=True)
+  
     last_login: datetime = Field(default_factory=datetime.now) 
     last_logout: datetime = Field(default_factory=datetime.now) 
+    
     # Relacionamento com a tabela CurriculoPaginas
     curriculos: List["CurriculoPaginas"] = Relationship(back_populates="user")
 

@@ -1,5 +1,5 @@
 
-from src.controllers import get_current_user
+
 from src.database import db_dependency 
 from src.models import CurriculoPaginas
 
@@ -34,6 +34,7 @@ async def readAllCurriculos(token,db):
 
 
 async def addNewCurriculo(dados, db):
+    from src.controllers.authController import get_current_user
     user =  await get_current_user(dados.token);
     curriculo = db.query(CurriculoPaginas).filter(CurriculoPaginas.user_id == user['id']).first()
     if curriculo:

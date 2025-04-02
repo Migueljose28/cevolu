@@ -6,12 +6,18 @@ from sqlmodel import Session, SQLModel
 from src.models.models import *
 
 
+
+
 from src.database.db import engine,  get_db
 from typing import Annotated
 from sqlalchemy.orm import Session
-from auth import get_current_user
+
 from src.routes import router as auth_router
 from src.routes import router_curriculos as router_curriculos
+from src.routes import router_vacancy as router_vagas
+
+from src.controllers.authController import get_current_user
+
 app = FastAPI()
 
 app.add_middleware(
@@ -25,6 +31,7 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(router_curriculos)
+app.include_router(router_vagas)
 
 def init_db():
     SQLModel.metadata.create_all(bind=engine)
@@ -40,7 +47,7 @@ user_dependency = Annotated[dict, Depends(get_current_user)]
 #Rotas
 @app.get("/start")
 async def home():
-    return JSONResponse(content={"redirect_url": "http://127.0.0.1:5501/templates/login.html"})
+    return JSONResponse(content={"redirect_url": "https://cevolu.com.br/templates/login.html"})
 
 
 

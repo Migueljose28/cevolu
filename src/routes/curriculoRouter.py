@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 from starlette import status
 from src.schemas import *
 from src.database import db_dependency
-from src.controllers.curriculosController import *
+from src.controllers import *
 
 #Crud
 
