@@ -1,7 +1,27 @@
 //variaveis
-let cevolua = "https://api.cevolu.com.br";
+let cevolu = "https://api.cevolu.com.br";
 let localhost = "http://127.0.0.1:8000";
-let cevolu = "http://127.0.0.1:8000";
+let cevolua = "http://127.0.0.1:8000";
+
+//token and username
+let username = localStorage.getItem("username");
+let token = localStorage.getItem("token");
+let role = localStorage.getItem("role");
+const nomeUsuario = document.getElementById("nomeUsuario");
+nomeUsuario.textContent = username ? username : '';
+
+
+console.log(role)
+if(role){
+if(role === "admin"){
+    let isadmin = document.getElementById("admin");
+    isadmin.classList.toggle("hidden");
+
+}
+}
+
+
+
 
 let valor = 0;
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
@@ -53,11 +73,6 @@ document.addEventListener('click', (event) => {
     dropdown.classList.toggle("hidden");
   });
   
-//token and username
-let username = localStorage.getItem("username");
-let token = localStorage.getItem("token");
-const nomeUsuario = document.getElementById("nomeUsuario");
-nomeUsuario.textContent = username ? username : '';
 
 async function verificarAutenticacao() {
   // Obtém o token do localStorage
@@ -69,7 +84,7 @@ async function verificarAutenticacao() {
     return;
   }}
 
-  console.log(username, token)
+  console.log(username, token, role)
 
 function logout(){
   //localStorage.removeItem("token");
@@ -287,3 +302,5 @@ async function enviarAlteration(nPaginas){
       document.getElementById("box-alert").style.display = "none";
     }
     
+
+  

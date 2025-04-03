@@ -1,7 +1,7 @@
 
-let cevolua = "https://api.cevolu.com.br";
+let cevolu = "https://api.cevolu.com.br";
 let localhost = "http://127.0.0.1:8000";
-let cevolu = "http://127.0.0.1:8000";
+let cevolua = "http://127.0.0.1:8000";
 
 window.onload = function() {
   setTimeout(function() {
@@ -67,6 +67,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
       console.log("Sucesso:", data);
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("username", data.username);
+      localStorage.setItem("role", data.role);
       window.location.href = "paginicial.html"; 
       break;
       
