@@ -6,10 +6,10 @@ POST http://127.0.0.1:8000/register
 Content-Type: application/json
 
 {
-  "username": "jose",  
-  "email": "migueljose28@gmail.com",
-  "phone": "111171111",
-  "cpf_cnpj": "11111711111",
+  "username": "JoseMiguel",  
+  "email": "migueljose128@gmail.com",
+  "phone": "1111711111",
+  "cpf_cnpj": "111111711111",
   "password": "n"
 }
 
@@ -17,7 +17,7 @@ Content-Type: application/json
 POST  http://127.0.0.1:8000/login
 Content-Type: application/x-www-form-urlencoded
 
-username=aaa&password=a
+username=jose&password=n
 
 
 #Curriculos###
@@ -52,3 +52,4 @@ Content-Type: application/json
 
 
 }
+

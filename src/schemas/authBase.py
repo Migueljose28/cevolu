@@ -16,4 +16,5 @@ class Userslogin(BaseModel):
 class Token(BaseModel):
     username: str
     access_token: str
+    role: str
     token_type: str

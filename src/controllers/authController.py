@@ -68,7 +68,7 @@ async def login_for_access_token(form_data, response, db):
         samesite="None",
         secure=True
     )
-    return { "username": form_data.username, "access_token": token, "token_type": "bearer"}
+    return { "username": auth_result["user"].username, "role":auth_result["user"].role,"access_token": token, "token_type": "bearer"}
 
 def authenticate_user(username: str, password: str, db):
     user = db.query(Users).filter(func.lower(Users.username) == username.lower()).first()
