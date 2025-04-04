@@ -12,6 +12,10 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      - name: Substituir URL da API para produção
+        run: |
+          echo 'const cevolu = "https://api.cevolu.com.br";' > static/js/config.js
+
       - name: Enviar arquivos via FTP
         uses:  SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
