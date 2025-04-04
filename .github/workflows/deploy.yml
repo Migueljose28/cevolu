@@ -17,17 +17,18 @@ jobs:
           echo 'const cevolu = "https://api.cevolu.com.br";' > static/js/config.js
 
       - name: Enviar arquivos via FTP
-        run: |
-          retries=3
-          while [ $retries -gt 0 ]; do
-            if npx ftp-deploy --server ${{ secrets.FTP_SERVER }} --username ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} --localDir "./" --serverDir "/public_html/" --protocol ftp --exclude "**/index.html **/.git* **/.github* **/node_modules/* **/venv/* **/.env"; then
-              echo "FTP Deploy succeeded"
-              exit 0
-            else
-              echo "FTP Deploy failed, retrying..."
-              retries=$((retries-1))
-              sleep 10
-            fi
-          done
-          echo "FTP Deploy failed after multiple attempts"
-          exit 1
+        uses:  SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: "./"  # Pasta local que será enviada
+          server-dir: "/public_html/"  # Caminho no servidor
+          protocol: ftp
+          exclude: |
+            **/index.html
+            **/.git*
+            **/.github*
+            **/node_modules/*
+            **/venv/*
+            **/.env
