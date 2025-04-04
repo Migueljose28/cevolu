@@ -53,3 +53,22 @@ Content-Type: application/json
 
 }
 
+#Router admin
+###
+GET http://127.0.0.1:8000/admin/
+
+###
+PUT http://127.0.0.1:8000/admin/1
+Content-Type: application/json
+
+{
+
+
+  "username": "jose",
+  "email": "migueljose28@gmail.com",
+ "phone": "111171111",
+  "cpf_cnpj": "11111711111",
+  "is_active": true,
+  "role": "admin"
+
+}

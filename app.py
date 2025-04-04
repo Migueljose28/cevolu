@@ -4,18 +4,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlmodel import Session, SQLModel
 from src.models.models import *
-
-
-
-
 from src.database.db import engine,  get_db
 from typing import Annotated
 from sqlalchemy.orm import Session
-
-from src.routes import router as auth_router
-from src.routes import router_curriculos as router_curriculos
-from src.routes import router_vacancy as router_vagas
-
+#Routers
+from src.routes import router as users
+from src.routes import router_curriculos as curriculos
+from src.routes import router_vacancy as vagas
+from src.routes import adminRouter as admin
+#COntrollers
 from src.controllers.authController import get_current_user
 
 app = FastAPI()
@@ -28,10 +25,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-app.include_router(auth_router)
-app.include_router(router_curriculos)
-app.include_router(router_vagas)
+#Incluindo as rotas
+app.include_router(users)
+app.include_router(curriculos)
+app.include_router(vagas)
+app.include_router(admin)
 
 def init_db():
     SQLModel.metadata.create_all(bind=engine)

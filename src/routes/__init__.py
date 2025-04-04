@@ -3,3 +3,4 @@
 from .authRouter import *
 from .curriculoRouter import *
 from .vacancyRouter import *
+from .adminRouter import *

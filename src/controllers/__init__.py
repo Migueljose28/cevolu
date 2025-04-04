@@ -3,3 +3,4 @@
 from .authController import *
 from .curriculosController import *
 from .vacancyController import createVacancy
+from .adminController import *
