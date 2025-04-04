@@ -1,5 +1,4 @@
-let cevolu = "https://api.cevolu.com.br";
-let cevolua = "http://127.0.0.1:8000";
+
 
 
 let sidebar = document.getElementById('sidebar-multi-level-sidebar')

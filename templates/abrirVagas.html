@@ -203,10 +203,12 @@
 
 
 <script id="js-file" src="/static/js/AbrirVagas.js"></script>
+<script id="js-config" src="/static/js/config.js"></script>
 <script>
    const timestamp = Date.now(); // Gera um número único com base no tempo
    document.getElementById('css-file').href = `/static/css/index.css?v=${timestamp}`;
    document.getElementById('js-file').src = `/static/js/AbrirVagas.js?v=${timestamp}`;
+   document.getElementById('js-config').src = `/static/js/config.js?v=${timestamp}`;
   
 
 

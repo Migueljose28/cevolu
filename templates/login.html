@@ -73,11 +73,14 @@
     </div>
 </body>
 <script id="js-file" src="/static/js/login.js">
+    
 </script>
+<script id="js-config" src="/static/js/config.js"></script>
 <script>
     const timestamp = Date.now(); // Gera um número único com base no tempo
     document.getElementById('css-file').href = `/static/css/login.css?v=${timestamp}`;
     document.getElementById('js-file').src = `/static/js/login.js?v=${timestamp}`;
+    document.getElementById('js-config').src = `/static/js/config.js?v=${timestamp}`;
     window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 });

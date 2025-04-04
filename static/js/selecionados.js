@@ -1,5 +1,4 @@
-let cevolu = "https://api.cevolu.com.br";
-let cevolua = "http://127.0.0.1:8000";
+
 
 let valor = 0;
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';

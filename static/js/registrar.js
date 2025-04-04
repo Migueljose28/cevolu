@@ -1,6 +1,4 @@
-let cevolu = "https://api.cevolu.com.br";
-let localhost = "http://127.0.0.1:8000";
-let cevolua = "http://127.0.0.1:8000";
+
 
 window.onload = function() {
   setTimeout(function() {

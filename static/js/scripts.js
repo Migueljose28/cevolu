@@ -1,7 +1,5 @@
 //variaveis
-let cevolu = "https://api.cevolu.com.br";
-let localhost = "http://127.0.0.1:8000";
-let cevolua = "http://127.0.0.1:8000";
+
 
 //token and username
 let username = localStorage.getItem("username");

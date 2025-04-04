@@ -1,7 +1,4 @@
 
-let cevolu = "https://api.cevolu.com.br";
-let localhost = "http://127.0.0.1:8000";
-let cevolua = "http://127.0.0.1:8000";
 
 window.onload = function() {
   setTimeout(function() {
@@ -53,7 +50,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
  try {
   
-  const response = await fetch(`http://127.0.0.1:8000/login`, {
+  const response = await fetch(`${cevolu}/login`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
