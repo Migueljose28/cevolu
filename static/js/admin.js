@@ -1,3 +1,29 @@
+
+let username = localStorage.getItem("username");
+let token = localStorage.getItem("token");
+let role = localStorage.getItem("role");
+
+
+
+async function verificarAutenticacao() {
+  // Obtém o token do localStorage
+  //var valor = 0;
+  //atualizarValor(valor);
+  if (!token) {
+    
+    window.location.href = "login.html"; // Redireciona para a página de login
+    return;
+  }}
+
+  console.log(username, token, role)
+
+function logout(){
+  //localStorage.removeItem("token");
+  //localStorage.removeItem("username");
+  window.location.href = "paginicial.html"; 
+  console.log("logout")
+}
+
 async function sendget() {
   
     try {
