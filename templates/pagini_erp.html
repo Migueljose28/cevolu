@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+    <meta charset="utf-8">
+    <title>ERP | C'évolu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../static/img/icone.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/pagini_erp.css">
+    </head>
+<body>
+    <nav>
+        <div class="nav-div">
+            <button class="open-btn" onclick="toggleMenu()">☰</button>
+
+            <p>Consulte - Gestão de Resultados</p>
+        </div>
+        <div class="nav-div">
+            <a href="" class="nav-btn-duvida">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 18h.01"/>
+                    <path d="M12 14c0-2 3-2.5 3-5a3 3 0 0 0-6 0"/>
+                </svg>
+            </a>
+            <a href="" class="nav-btn">
+                <span>Clique aqui</span>
+            </a>
+            <a href="../templates/paginicial.html" class="logout">
+                <svg class="shrink-0 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+                </svg>
+                <span>Voltar</span>
+            </a>
+        </div>
+    </nav>
+
+
+    <!--fim da nav-->
+
+    <div class="menu-lateral" id="menuLateral">
+        <button class="open-btn" onclick="toggleMenu()">☰</button>
+        <a href="#">Início</a>
+        <a href="#">Vendas</a>
+        <a href="#">Estoque</a>
+        <a href="#">Compras</a>
+        <a href="#">Financeiro</a>
+        <a href="#">Clientes</a>
+        <a href="#">Membros</a>
+    </div>
+    
+    
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+        <div class="botoes-gerais">
+            <a href class="btn-dashboard vendas">
+                <i class="fa-solid fa-badge-dollar"></i>
+                <span>Vendas</span>
+            </a>
+            <a href class="btn-dashboard estoque">
+                <span>Estoque</span>
+            </a>
+            <a href class="btn-dashboard compras">
+                <span>Compras</span>
+            </a>
+            <a href class="btn-dashboard financeiro">
+                <span>Financeiro</span>
+            </a>
+            <a href class="btn-dashboard clientes">
+                <span>Clientes</span>
+            </a>
+            <a href class="btn-dashboard membros">
+                <span>Membros</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+        
+    </div>
+
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+        
+    </div>
+</body>
+<script>
+
+    function toggleMenu() {
+        const menu = document.getElementById("menuLateral");
+        const dashboards = document.querySelectorAll(".dashboard"); // Seleciona todas as divs com a classe dashboard
+
+        if (menu.style.width === "250px") {
+            // Fecha o menu
+            menu.style.width = "0";
+            dashboards.forEach(dashboard => {
+                dashboard.style.marginLeft = "0"; // Remove o deslocamento de cada dashboard
+            });
+        } else {
+            // Abre o menu
+            menu.style.width = "250px";
+            dashboards.forEach(dashboard => {
+                dashboard.style.marginLeft = "250px"; // Aplica o deslocamento a cada dashboard
+            });
+        }
+    }
+</script>
+</html>

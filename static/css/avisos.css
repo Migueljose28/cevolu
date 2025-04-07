@@ -223,3 +223,229 @@ footer a:hover {
 }
 
 
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0;
+    background-color: #f5f5f5; 
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-grow: 1; 
+    flex-direction: column;
+    gap: 20px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2f2841;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+nav .logout {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav .logout:hover {
+    background-color: #3e3456;
+}
+
+nav .nav-btn {
+    color: #2f2841;
+    background-color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+nav svg {
+    width: 40px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.container {
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+table {
+    width: 100%; /* Faz a tabela ocupar toda a largura do container */
+    border-collapse: collapse; /* Remove espaços entre bordas */
+    max-height: 400px; /* Define a altura máxima da tabela */
+    overflow: hidden; /* Remove qualquer conteúdo que ultrapasse os limites */
+    margin: 0;
+}
+
+thead {
+    position: sticky; /* Fixa o cabeçalho no topo */
+    top: 0; /* Garante que o cabeçalho fique no topo */
+    background-color: #f5f5f5; /* Cor de fundo para o cabeçalho */
+    z-index: 2; /* Garante que o cabeçalho fique acima do conteúdo */
+}
+
+tbody {
+    max-height: 300px; /* Define a altura máxima do tbody */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+    width: 100%; /* Garante que o tbody ocupe toda a largura */
+}
+
+tr {
+    table-layout: fixed; /* Garante que as colunas tenham largura fixa */
+    width: 100%; /* Garante que as linhas ocupem toda a largura */
+}
+
+th, td {
+    text-align: center; /* Centraliza o texto */
+    padding: 10px; /* Adiciona espaçamento interno */
+    border: 1px solid #ddd; /* Adiciona bordas às células */
+    width: auto; /* Garante que as colunas se ajustem automaticamente */
+}
+
+th {
+    font-weight: bold; /* Destaca os títulos */
+    background-color: #eaeaea; /* Cor de fundo para os títulos */
+}
+
+.btn {
+    background-color: #2f2841;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #1d1225;
+    color: white;
+}
+
+.pesquisar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: #2f2841;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 80%;
+    
+}
+
+.form-inline {
+    display: flex;
+    justify-content: space-between; /* Um item no início e outro no final */
+    align-items: center; /* Alinha os itens verticalmente */
+    width: 100%; /* Garante que o formulário ocupe toda a largura */
+    padding: 0 10px; /* Adiciona espaçamento interno */
+    gap: 10px; /* Espaçamento entre os itens */
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row;
+}
+
+footer {
+    margin-top: auto;
+    background-color: #2f2841;
+    color: white;
+    text-align: center;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-top: 2.5px solid #B1F901;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+footer a {
+    color: #B1F901;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #1794fa;
+}
+
+@media (max-width: 768px) {
+    nav {
+        width: 100%;
+    }
+
+    footer {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+
