@@ -1,6 +1,7 @@
 from src.models import Vacancy
 
 
+
 async def createVacancy(dados, db):
     title = dados["title"]
     description = dados["Descrição"]
