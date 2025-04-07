@@ -1,6 +1,13 @@
 *!/bin/bash
+echo "Iniciando o deploy em $(date) na vps"
+
 cd /home/cevolu || exit
 git pull master
+
+echo "usando .env de produção"
+cp .env.prod .env
+
+echo "reiniciando o nginx"
 sudo systemctl daemon-reload
 sudo systemctl restart seuprojeto
 sudo systemctl restart nginx

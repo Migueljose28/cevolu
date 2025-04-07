@@ -5,13 +5,29 @@ import pymysql
 import sqlite3
 from typing import Annotated
 from fastapi import  Depends
+from dotenv import load_dotenv
+import os
 
-senha = "@Consulte@20#25@"
-senha_escapada = urllib.parse.quote_plus(senha)
+
+load_dotenv()
+def get_database_url():
+    env = os.getenv("ENV", "development")
+
+    if env == "production":
+        user = os.getenv("DB_USER")
+        password = urllib.parse.quote_plus(os.getenv("DB_PASS"))
+        host = os.getenv("DB_HOST")
+        db = os.getenv("DB_NAME")
+
+        return f"mysql+pymysql://{user}:{password}@{host}/{db}"
+
+    # Ambiente de desenvolvimento
+    return os.getenv("DATABASE_URL", "sqlite:///database.db")
+
+
+SQLALCHEMY_DATABASE_URL = get_database_url()
 
 # Configuração do banco de dados
-mysql_url = f'mysql+pymysql://u630267573_user:{senha_escapada}@cevolu.com.br/u630267573_database'
-SQLALCHEMY_DATABASE_URL = mysql_url
 #"sqlite:///database.db"
 
 
