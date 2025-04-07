@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cevolu | Banco de talento</title>
+</head>
+<body>
+    <script>
+
+const redenrizar = async () => {
+    const response = await fetch("https://api.cevolu.com.br/start");
+    const data = await response.json();
+   
+    if(data.redirect_url){
+    window.location.href = data.redirect_url;    
+    }else{
+        alert("Erro ao obter o redirecionamento")
+
+    }
+};
+redenrizar()
+    </script>
+</body>
+</html>

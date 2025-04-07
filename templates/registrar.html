@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" id="css-file" href="/static/css/registrar.css">
+    <title>Registrar</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" type="imagex/png" href="/static/img/logo.png">
+    <style>
+       body {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+body.loaded {
+    opacity: 1;
+}
+    </style>
+   
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <img src="/static/img/logo.png" class="left-login-img" alt="logo">
+        </div>
+
+        <div class="right-login">
+            <div class="card-login">
+                <h1 >Cadastre-se</h1>
+                <form id="registrar">
+                    <div class="form-container">
+                        <div>
+                        <div class="textfield">
+                          
+                            <input type="text" name="nomeForm" placeholder="Usuário" id="nomeForm">
+                        </div>
+                        <div class="textfield">
+                           
+                            <input type="email" name="emailForm" placeholder="Email" id="emailForm">
+                        </div>
+                   
+                        <div class="textfield">
+                            
+                            <input type="text" name="telefoneForm" placeholder="Telefone" id="telefoneForm">
+                        </div>
+                        
+                        </div>
+                        <div>
+                        <div class="textfield">
+                           
+                            <input type="text" name="cpfForm" placeholder="CPF OU CNPJ" id="cpfForm">
+                        </div>
+                        <div class="textfield">
+                            <section class="input">
+                            <input type="password" name="senhaForm" placeholder="Senha" id="senhaForm">
+                            <button type="button"  onclick="exibirpassword('senhaForm',this)">
+                                <svg class="size-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+                                  </svg>
+                                  
+                            </button>
+                        </section>
+                        </div>
+                        <div class="textfield">
+                           <section class="input">
+                            <input type="password" name="confirmarSenhaForm" placeholder="confirmar Senha" id="confirmarsenha">
+                            <button type="button"  onclick="exibirpassword('confirmarsenha', this)">
+                                <svg class="size-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+                                  </svg>
+                                  
+                            </button>
+                        </section>
+                        </div>
+                    </div>
+                    </div>
+                    <button class="btn-login" type="submit" >Registrar</button>
+
+                    <a class="" href="/templates/login.html">Login</a>
+                </form>
+            </div>
+        </div>
+        </div>
+
+        
+<div  id="box-alert" class="fixed flex inset-0  items-center justify-center ">
+    <!--Caixa de mensagem-->
+    <div class="bg-sky-100 p-6 rounded-2xl shadow-xl text-center w-80">
+        <div class = " flex flex-row">
+            <section  class="h-5 w-5  mr-1 bg-red-500 rounded-2xl"></section>
+            <section class="h-5 w-5   mr-1 bg-yellow-500 rounded-2xl"></section>
+            <section class="h-5 w-5  bg-green-500 rounded-2xl"></section>
+        </div>
+
+        <h2 id="title_box_alert" class="text-xl font-semibold mb-2 "></h2>
+        <p id="alert" class="text-red-700 font-semibold mb-6 "></p>
+        <button id="button_box_alert" type="button" class="bg-red-500 p-3 rounded-2xl shadow-xl text-center hover:bg-red-800 w-full " onclick="close_box_message()">Fechar</button>
+    </div>
+</div>
+</body>
+<script id="js-file" src="/static/js/registrar.js"></script>
+<script id="js-config" src="/static/js/config.js"></script>
+<script>
+    const timestamp = Date.now(); // Gera um número único com base no tempo
+    document.getElementById('css-file').href = `/static/css/registrar.css?v=${timestamp}`;
+    document.getElementById('js-file').src = `/static/js/registrar.js?v=${timestamp}`;
+    document.getElementById('js-config').src = `/static/js/config.js?v=${timestamp}`;
+    window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+</script>
+
+
+</html>

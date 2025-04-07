@@ -1,0 +1,35 @@
+name: Deploy para Hostinger
+
+on:
+  push:
+    branches:
+      - main  # Dispara quando há push na branch principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Substituir URL da API para produção
+        run: |
+          echo 'const cevolu = "https://api.cevolu.com.br";' > static/js/config.js
+
+      - name: Enviar arquivos via FTP
+        uses:  SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: "./"  # Pasta local que será enviada
+          server-dir: "/public_html/"  # Caminho no servidor
+          protocol: ftp
+          exclude: |
+            **/index.html
+            **/.git*
+            **/.github*
+            **/node_modules/*
+            **/venv/*
+            **/.env
+          dangerous-clean-slate: false
