@@ -1,0 +1,294 @@
+body {
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2f2841;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav div a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+nav div .logout {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav div .logout:hover {
+    background-color: #3e3456;
+}
+
+nav div .nav-btn {
+    color: #2f2841;
+    background-color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+nav div .nav-btn-duvida {
+    background-color: #90b92f;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+.nav-div p {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+nav div svg {
+    width: 40px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.nav-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 80%;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard h1 {
+    color: #2f2841;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: left;
+    width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.botoes-gerais {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Estilo geral para todos os botões com a classe .btn-dashboard */
+.btn-dashboard {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: white;
+    background-color: #2f2841; /* Cor padrão */
+}
+
+/* Estilo específico para o botão com a classe .vendas */
+.btn-dashboard.vendas {
+    background-color: #97bc3c; /* Verde */
+}
+
+.btn-dashboard.vendas:hover {
+    background-color: #45a049; /* Verde mais escuro ao passar o mouse */
+}
+
+/* Estilo específico para o botão com a classe .estoque */
+.btn-dashboard.estoque {
+    background-color: #4ba9d8; /* Azul */
+}
+
+.btn-dashboard.estoque:hover {
+    background-color: #1976d2; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Estilo específico para o botão com a classe .compras */
+.btn-dashboard.compras {
+    background-color: #ffc107; /* Laranja */
+}
+
+.btn-dashboard.compras:hover {
+    background-color: #ffb300; /* Laranja mais escuro ao passar o mouse */
+}
+
+/* Estilo específico para o botão com a classe .financeiro */
+.btn-dashboard.financeiro {
+    background-color: #f44336; /* Vermelho */
+}
+
+.btn-dashboard.financeiro:hover {
+    background-color: #e53935; /* Vermelho mais escuro ao passar o mouse */
+}
+
+/* Estilo específico para o botão com a classe .clientes */
+.btn-dashboard.clientes {
+    background-color: #9c27b0; /* Roxo */
+}
+
+.btn-dashboard.clientes:hover {
+    background-color: #7b1fa2; /* Roxo mais escuro ao passar o mouse */
+}
+
+/* Estilo específico para o botão com a classe .membros */
+.btn-dashboard.membros {
+    background-color: #ff9800; /* Amarelo */
+}
+
+.btn-dashboard.membros:hover {
+    background-color: #fc8b02;; /* Amarelo mais escuro ao passar o mouse */
+}
+
+.menu-lateral {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2f2841;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu-lateral a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu-lateral a:hover {
+    background-color: #575068;
+}
+
+
+
+.open-btn {
+    font-size: 14px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.open-btn:hover {
+    background: none; /* Garante que o fundo não mude */
+    color: inherit; /* Mantém a cor original */
+    cursor: pointer; /* Mantém o cursor como pointer */
+    border: none;
+    color: white;
+}
+
+footer {
+    margin-top: 10px;
+    background-color: #2f2841;
+    color: white;
+    text-align: center;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-top: 2.5px solid #B1F901;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+footer a {
+    color: #B1F901;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #1794fa;
+}
+
+button {
+    text-transform: uppercase;
+    background-color: #B1F901;
+    color: black;
+    border-radius: 15px;
+    padding: 15px 28px 15px 24px;
+    border: #B1F901 solid 0.1px;
+    font-weight: bold;
+}
+
+button:hover {
+    transition: 1s;
+    border: #1794fa solid 0.1px;
+    background-color: #1794fa;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    nav {
+        width: 100%;
+    }
+}
