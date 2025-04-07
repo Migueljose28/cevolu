@@ -1,12 +1,28 @@
 from src.models import Users
 from fastapi import HTTPException
+from sqlmodel import select
+from sqlalchemy import or_, cast, String
 
 async def getAllUser(db):
     getAll = db.query(Users).all()
     return getAll
 
-async def getUser(id, db):
-    user_to_update = db.query(Users).filter(Users.id == id).first()
+async def getUser(termo_buscar, db):
+    termo = f"%{termo_buscar}%"
+
+    query = select(Users).where(
+        or_(
+            cast(Users.id, String).like(termo),
+            Users.username.like(termo),
+            Users.email.like(termo),
+            cast(Users.phone, String).like(termo)
+        )
+    )
+
+    return db.exec(query).all()
+
+
+
     if not user_to_update:
         raise HTTPException(status_code=404, detail="Usuário não encontrado.")
     return user_to_update

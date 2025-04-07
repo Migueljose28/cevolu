@@ -55,10 +55,9 @@ Content-Type: application/json
 
 #Router admin
 ###
-GET http://127.0.0.1:8000/admin/
-
+GET http://127.0.0.1:8000/admin
 ###
-PUT http://127.0.0.1:8000/admin/1
+PUT http://127.0.0.1:8000/admin/1111
 Content-Type: application/json
 
 {

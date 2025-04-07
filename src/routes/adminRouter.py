@@ -14,9 +14,9 @@ adminRouter = APIRouter()
 async def returnFunctionAsync(db: db_dependency):
     return await getAllUser(db)
 
-@adminRouter.get("/admin/{id}", status_code=status.HTTP_200_OK) 
-async def returnFunctionAsync(db: db_dependency, id: int | None = None) -> None:
-    return await getUser(id, db)
+@adminRouter.get("/admin/{termo}", status_code=status.HTTP_200_OK) 
+async def returnFunctionAsync(db: db_dependency, termo: str | None = None) -> None:
+    return await getUser(termo, db)
 
 @adminRouter.put("/admin/{id}", status_code=status.HTTP_202_ACCEPTED)
 async def returnFunctionAsync(Userbase: adminBase,  db: db_dependency, id: int | None = None) -> None:
