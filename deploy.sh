@@ -1,7 +1,7 @@
-*!/bin/bash
+#!/bin/bash
 echo "Iniciando o deploy em $(date) na vps"
 
-cd /home/cevolu || exit
+cd /root/cevolu || exit
 git pull master
 
 echo "usando .env de produção"
