@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     display: flex;
     flex-direction: column;
@@ -256,3 +257,263 @@ footer a:hover {
         margin: 0;
     }
 }
+=======
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-grow: 1; 
+    flex-direction: column;
+    gap: 20px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2f2841;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+nav .logout {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav .logout:hover {
+    background-color: #3e3456;
+}
+
+nav .nav-btn {
+    color: #2f2841;
+    background-color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+nav svg {
+    width: 40px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 400px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    border-top: 2.5px solid #B1F901;
+}
+
+.t-icon {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+h1{
+    text-align: left;
+    width: 85%;
+    font-size: 40px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.container-row {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    width: 100%; 
+}
+
+.container-row.estado {
+    align-items: center; 
+    gap: 10px; 
+}
+
+.container-row i{
+    font-size: 18px;
+    color: #2f2841;
+}
+.container-row .titulo {
+    flex-shrink: 0; 
+    width: 100px; 
+    text-align: right;
+    margin-right: 10px; 
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.container-row .form-control {
+    flex-grow: 1; 
+    min-width: 0; 
+}
+
+.estado-options {
+    display: flex;
+    flex-grow: 1; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.radiobuttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+.btn {
+    background-color: #2f2841;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #1d1225;
+    color: white;
+}
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.container-btn .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #2f2841;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.container-btn .btn:hover {
+    background-color: #1d1225;
+}
+
+footer {
+    margin-top: auto;
+    background-color: #2f2841;
+    color: white;
+    text-align: center;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-top: 2.5px solid #B1F901;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+footer a {
+    color: #B1F901;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #1794fa;
+}
+
+@media (max-width: 768px) {
+    nav {
+        width: 100%;
+    }
+
+    footer {
+        width: 100%;
+        margin: 0;
+    }
+}
+>>>>>>> c27aaccd22d40ed330040f668a2cb1ddee594f10
