@@ -244,11 +244,11 @@ footer a:hover {
 
 .container-head a i {
     color:  white;
+    transition: color 0.7ms ease;
 }
 
-.container-head a i:hover {
-    color: black;
-}
+
+
 .btn {
     background-color: #2f2841;
     color: white;
@@ -259,11 +259,15 @@ footer a:hover {
     margin: 4px 2px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.7s ease;
+    transition: background-color 0.7s ease, color 0.7s ease;
     font-weight: bold;
 }
 
 .container-head  .btn:hover {
     background-color: #B1F901;
+    color: black;
+}
+
+.container-head .btn:hover i {
     color: black;
 }
