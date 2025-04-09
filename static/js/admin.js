@@ -43,6 +43,7 @@ async function sendget() {
         const ano = dataObj.getFullYear();
         const dataFormatada = `${dia}/${mes}/${ano}`;
         duplicar(data[i].username, data[i].email, data[i].phone, data[i].role, dataFormatada);
+        document.getElementById("countUser").innerHTML = data.length;
       }
       } else {
         console.error("Requisição falhou:", response.status);
@@ -52,7 +53,7 @@ async function sendget() {
     }
   }
   
-  sendget();
+sendget();
   
 
   function duplicar(nome, email, telefone, role, last_login) {
@@ -96,6 +97,7 @@ async function sendget() {
           const dataFormatada = `${dia}/${mes}/${ano}`;
           console.log("Data formatada:", dataFormatada); // Se quiser exibir
           duplicar(data[i].username, data[i].email, data[i].phone, data[i].role, dataFormatada);
+          document.getElementById("countUser").innerHTML = data.length;
         }
   
       } else {
