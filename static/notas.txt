@@ -1,0 +1,2 @@
+responsividade das tabelas, modal criar membro
+estilizar o formulário de criar o formulário
