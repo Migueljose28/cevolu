@@ -48,7 +48,7 @@ async def verify_login(form_data, response, db):
         user_to_update.last_login = datetime.now()
 
         db.commit()
-        return array
+        return  await get_current_user (array["access_token"])
     raise HTTPException(status_code=400, detail="Usuário não encontrado.")
     
 
@@ -58,6 +58,7 @@ async def login_for_access_token(form_data, response, db):
         raise HTTPException(status_code=400, detail=auth_result["message"])
     token = create_access_token(
         auth_result["user"].username,
+        auth_result["user"].role,
         auth_result["user"].id,
         timedelta(minutes=120)
     )
@@ -81,8 +82,8 @@ def authenticate_user(username: str, password: str, db):
     return {"success": True, "user": user, "message": "Login realizado com sucesso!"}
 
 
-def create_access_token(username: str, user_id: int, expires_delta: timedelta):
-    encode = {'sub': username, 'id': user_id}
+def create_access_token(username: str, tole: str,  user_id: int,  expires_delta: timedelta):
+    encode = {'sub': username, 'id': user_id, 'role': tole}
     expires = datetime.utcnow() + expires_delta
     encode.update({'exp': expires})
     return jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM) 
@@ -92,10 +93,11 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]):
     try:   
         payload = jwt.decode(token, SECRET_KEY, algorithms=ALGORITHM)
         username: str = payload.get('sub')
+        role: str = payload.get('role')
         user_id: int = payload.get('id')
         if username is None:
             raise HTTPException(status_code=400, detail="Usuário não encontrado.")
-        return {"username": username, "id": user_id}
+        return {"username": username, "token": token, "role": role}
     except JWTError:
         raise HTTPException(status_code = status.HTTP_400_UNAUTHORIZED,
                             detail= 'Could not validate user.')

@@ -57,17 +57,28 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:8000/admin
 ###
-PUT http://127.0.0.1:8000/admin/1111
+PUT http://127.0.0.1:8000/admin/2
 Content-Type: application/json
 
 {
 
-
-  "username": "jose",
-  "email": "migueljose28@gmail.com",
- "phone": "111171111",
-  "cpf_cnpj": "11111711111",
+  "username": "JoseMiguel",  
+  "email": "migueljose128@gmail.com",
+  "phone": "1111711111",
+  "cpf_cnpj": "111111711111",
   "is_active": true,
   "role": "admin"
 
+}
+
+####
+
+GET http://127.0.0.1:8000/getVacancy/pendente
+
+
+
+###
+PUT http://127.0.0.1:8000/modifyVacancy/1
+{
+  
 }

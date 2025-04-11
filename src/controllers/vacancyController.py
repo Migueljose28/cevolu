@@ -23,6 +23,13 @@ async def createVacancy(dados, db):
     db.refresh(newVacancy)
     return {"mensagem": "Deu certo"}
 
+#Retorna os pendentes e etc..
+async def getVacancy(status, db):
+    vacancies = db.query(Vacancy).filter(Vacancy.status == status).all()
+    return vacancies
+
+async def modifyVacancy(id, db):
+    return {"deu certo": id}
 
 
 

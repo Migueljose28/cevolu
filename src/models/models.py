@@ -8,6 +8,11 @@ class Role(str, Enum):
     MEMBRO = "MEMBRO"
     USER = "user"
 
+class StatusEnum(str, Enum):
+    pendente = "pendente"
+    aprovado = "aprovado"
+    rejeitado = "rejeitado"
+
 class Users(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     username: str = Field(index=True)
@@ -44,6 +49,6 @@ class Vacancy(SQLModel, table=True):
     typeForWork: str = Field(index=True,default="")
     Location: str = Field(index=True,default="")
     expirationDate: str = Field(index=True,default="")
-    #datetime = Field(default_factory=datetime.now)
-
+    status: StatusEnum = Field(default=StatusEnum.pendente)
+    created_at: datetime = Field(default_factory=datetime.now)
     #user: Users = Relationship(back_populates="Vacancy")

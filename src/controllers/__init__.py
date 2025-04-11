@@ -2,5 +2,5 @@
 # Este arquivo pode estar vazio, mas ainda indica que /models é um pacote.
 from .authController import *
 from .curriculosController import *
-from .vacancyController import createVacancy
+from .vacancyController import createVacancy, getVacancy, modifyVacancy
 from .adminController import *

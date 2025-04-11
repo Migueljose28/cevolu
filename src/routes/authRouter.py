@@ -17,6 +17,6 @@ async def register_route(db: db_dependency,create_user_request: UsersRegister):
     return await create_user(db, create_user_request)
 
 
-@router.post("/login", response_model=Token)#A resposta vem do formado do schemas
+@router.post("/login", status_code=status.HTTP_200_OK)#A resposta vem do formado do schemas
 async def login_route( response: Response, form_data: Annotated[OAuth2PasswordRequestForm, Depends()],db: db_dependency):
     return await verify_login(form_data, response, db)
